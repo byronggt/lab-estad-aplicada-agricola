@@ -1,1 +1,2 @@
-# lab-estad-aplicada-agricola
+# Dr. Byron González
+# Laboratorio de Estadística aplicada a la producción agrícola
