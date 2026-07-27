@@ -4,7 +4,7 @@
 if(!require(AgroR)){install.packages("AgroR")}
 if(!require(readxl)){install.packages("readxl")}
 
-raiz<-read_excel("lraiz.xlsx")
+raiz<-read_excel("data/lraiz.xlsx")
 head(raiz)
 with(raiz,DIC(concentracion,longraiz,mcomp = "tukey"))
 medias <- aggregate(longraiz ~ concentracion, data = raiz, mean)
