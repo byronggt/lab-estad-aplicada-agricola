@@ -5,7 +5,7 @@
 if(!require(AgroR)){install.packages("AgroR")}
 if(!require(readxl)){install.packages("readxl")}
 
-apio<-read_excel("apiodens.xlsx")
+apio<-read_excel("data/apiodens.xlsx")
 
 head(apio)
 with(apio,DBC(densidad,bloque,rend,mcomp = "sk"))
