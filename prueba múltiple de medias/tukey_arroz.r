@@ -18,3 +18,5 @@ mod<-aov(prod_arroz~trat,data=arroz)
 summary(mod)
 tukey_agricolae <- HSD.test(mod, "trat", group = TRUE, console = TRUE)
 plot(tukey_agricolae, main = "Prueba de Tukey - Producción de Arroz")
+
+==
