@@ -4,7 +4,7 @@
 if(!require(AgroR)){install.packages("AgroR")}
 if(!require(readxl)){install.packages("readxl")}
 
-pinabete<-read_excel("pdpinabete.xlsx")
+pinabete<-read_excel("data/pdpinabete.xlsx")
 head(pinabete)
 
 with(pinabete, PSUBDBC(edad, fecha_siembra, rep, altura, ylab="altura", mcomp = "sk"))
@@ -54,7 +54,7 @@ anova(modelo_final)
 anova(modelo_final)
 
 # 4. Prueba de comparación de medias (Post-hoc)
-# Aunque la interacción no sea significativa, puedes obtener las comparaciones
+# Aunque la interacción no sea significativa, es posible obtener las comparaciones
 # de los efectos principales o de la interacción misma:
 
 # Opción A: Comparación de medias para la interacción (componente solicitado)
@@ -62,7 +62,7 @@ comp_interaccion <- emmeans(modelo_final, pairwise ~ edad | fecha_siembra, adjus
 print(comp_interaccion$contrasts)
 
 # Opción B: Obtener letras de significancia (Compact Letter Display)
-# Esto facilita mucho la interpretación en cuadros o gráficas
+# Esto facilita la interpretación en cuadros o gráficas
 letras_interaccion <- cld(emmeans(modelo_final, ~ edad * fecha_siembra), Letters = letters)
 print(letras_interaccion)
 
