@@ -3,11 +3,35 @@
 
 if(!require(AgroR)){install.packages("AgroR")}
 if(!require(readxl)){install.packages("readxl")}
+if(!require(agricolae)){install.packages("agricolae")}
 
 pinabete<-read_excel("data/pdpinabete.xlsx")
 head(pinabete)
 
 with(pinabete, PSUBDBC(edad, fecha_siembra, rep, altura, ylab="altura", mcomp = "sk"))
+
+# Anova de parcelas divididas y prueba de Tukey con agricolae
+pinabete$edad <- factor(pinabete$edad)
+pinabete$fecha_siembra <- factor(pinabete$fecha_siembra)
+pinabete$rep <- factor(pinabete$rep)
+
+anova_agricolae <- with(pinabete, sp.plot(rep, edad, fecha_siembra, altura))
+
+# Edad es la parcela grande: usar el error y los grados de libertad Ea
+tukey_edad <- HSD.test(
+  pinabete$altura, pinabete$edad,
+  DFerror = anova_agricolae$gl.a,
+  MSerror = anova_agricolae$Ea,
+  group = TRUE, console = TRUE
+)
+
+# Fecha de siembra es la parcela pequeña: usar el error y los grados de libertad Eb
+tukey_fecha_siembra <- HSD.test(
+  pinabete$altura, pinabete$fecha_siembra,
+  DFerror = anova_agricolae$gl.b,
+  MSerror = anova_agricolae$Eb,
+  group = TRUE, console = TRUE
+)
 
 # Transformar la variable altura
 
@@ -74,4 +98,3 @@ plot(modelo_final, resid(., type = "pearson") ~ fitted(.),
 # Gráfico de Normalidad (QQ-Plot)
 qqnorm(resid(modelo_final, type = "pearson"))
 qqline(resid(modelo_final, type = "pearson"))
-
