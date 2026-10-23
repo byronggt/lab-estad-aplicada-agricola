@@ -48,5 +48,3 @@ Los scripts usan paquetes de R para leer hojas de cálculo y realizar análisis 
 El repositorio ofrece ejemplos para estudiar la estructura de tratamientos, factores, bloques y errores experimentales, además de técnicas de comparación de medias y contrastes. El ejercicio de muestreo complementa los diseños experimentales, pero aborda la selección de observaciones y la estimación, no la asignación de tratamientos.
 
 Los datos y análisis son materiales de práctica: antes de aplicar los métodos a una investigación, verifica los supuestos del modelo, la estructura real del experimento, las unidades de medida y la interpretación agronómica de las variables. Los nombres de las carpetas identifican los temas; consulta cada script para conocer el análisis implementado.
-
-> Nota: `data/~$apiodens.xlsx` tiene el prefijo que Excel utiliza para archivos temporales de bloqueo. No es uno de los conjuntos de datos de la práctica y no debe usarse como entrada.
